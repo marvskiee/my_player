@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://vjs.zencdn.net/8.3.0/video-js.css" rel="stylesheet" />
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <video id="my-video" class="video-js vjs-16-9" controls preload="auto" data-setup="{}">
+        <source id="source-player" type='application/x-mpegURL' />
+        <p class="vjs-no-js">
+            To view this video please enable JavaScript, and consider upgrading to a
+            web browser that
+            <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+        </p>
+    </video>
+    <script src="https://vjs.zencdn.net/8.3.0/video.min.js"></script>
+    <script>
+        const url = new URL(document.location.href)
+        const searchParams = url.searchParams;
+        const video_source = searchParams.get("video_source")
+        const poster_source = searchParams.get("poster_source")
+        console.log(video_source, poster_source)
+
+        // Set player poster
+        const video_poster = document.getElementById("my-video")
+        video_poster.setAttribute("poster", poster_source)
+
+        // Set source player
+        const source_player = document.getElementById("source-player")
+        source_player.setAttribute("src", video_source)
+    </script>
+</body>
+
+</html>
